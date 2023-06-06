@@ -1,0 +1,18 @@
+https://opennetworking.org/wp-content/uploads/2021/04/21_04_14-VOLTHA-2.7-Techinar-.pdf
+
+
+voltha-infra and voltha-stack charts
+VOLTHA core
+OpenOLT
+Adaptor
+ONOS 1
+Client
+(eg. OFAgent)
+Etcd
+ONOS 1 ONOS
+● 2 “umbrella” helm charts for pod deployment and configuration
+● VOLTHA-INFRA: ONOS, ETCD, KAFKA
+● VOLTHA-STACK: OF-Agent, Core, OLT and ONU adapters.
+● support for all 3 workflows with different `values.yaml` file
+● Remove kind-voltha bash script → simpler deployment and configuration
+https://github.com/opencord/voltha-helm-charts/blob/master/README.md

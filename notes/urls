@@ -1,0 +1,21 @@
+# -*- makefile -*-
+
+https://docs.voltha.org/master
+
+[OVERVIEW]
+  [VOLTHA Releases]
+    [1] https://docs.voltha.org/master/overview/releases.html
+    [2] https://docs.voltha.org/master/overview/release_process.html
+    Code freeze 3 weeks before release.
+
+  [VOLTHA Release Process]
+    https://docs.voltha.org/master/overview/release_process.html#component-releasing-and-lazy-branching
+
+
+[RELEASES]
+  https://docs.voltha.org/master/release_notes/release_process.html
+
+
+
+
+# [EOF]

@@ -1,0 +1,54 @@
+# -*- makefile -*-
+
+ssh://gerrit.opencord.org:29418/voltha-helm-charts
+ssh://gerrit.opencord.org:29418/voltha-system-tests
+
+
+
+
+ssh://gerrit.opencord.org:29418/bbsim
+# [DEPRECATED] ssh://gerrit.opencord.org:29418/voltha-bbsim
+
+https://github.com/opencord/voltha-openolt-adapter
+
+# -----------------------------------------------------------------------
+# [SRC] https://gerrit.opencord.org/plugins/gitiles/voltha-helm-charts/+/refs/heads/master
+# -----------------------------------------------------------------------
+ssh://gerrit.opencord.org:29418/bbsim-sadis-server
+
+# voltha-helm-charts/voltha-go-controller/Chart.yaml
+ssh://gerrit.opencord.org:29418/voltha-go-controller
+
+# -----------------------------------------------------------------------
+# https://opennetworking.org/wp-content/uploads/2021/04/21_04_14-VOLTHA-2.7-Techinar-.pdf
+# voltha-helm-charts/voltha-stack/Chart.yaml :: OF-Agent, Core, adapters: {OLT, ONU}
+# -----------------------------------------------------------------------
+#
+
+# voltha-helm-charts/voltha-adapter-openonu/Chart.yaml   (x)
+# voltha-helm-charts/voltha-tracing/Chart.yaml           (?)
+
+## -----------------------------------------------------------------------
+# voltha-helm-charts/voltha/Chart.yaml
+# https://gerrit.opencord.org/plugins/gitiles/voltha
+## -----------------------------------------------------------------------
+git clone ssh://gerrit.opencord.org:29418/voltha
+
+# -----------------------------------------------------------------------
+# https://opennetworking.org/wp-content/uploads/2021/04/21_04_14-VOLTHA-2.7-Techinar-.pdf
+# voltha-helm-charts/voltha-infra/Chart.yaml :: ONOS ETCD KAFKA
+# -----------------------------------------------------------------------
+
+# voltha-helm-charts/voltha-adapter-simulated/Chart.yaml
+
+# voltha-helm-charts/voltha-northbound-bbf-adapter/Chart.yaml
+ssh://gerrit.opencord.org:29418/voltha-northbound-bbf-adapter
+
+
+## -----------------------------------------------------------------------
+## Info about voltha-infra and voltha-stack
+## -----------------------------------------------------------------------
+# .. seealso: https://opennetworking.org/wp-content/uploads/2021/04/21_04_14-VOLTHA-2.7-Techinar-.pdf
+# .. seealso: https://github.com/opencord/voltha-helm-charts/blob/master/README.md
+
+# [EOF]

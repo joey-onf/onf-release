@@ -1,0 +1,6 @@
+# -*- makefile -*-
+
+1) Create branch voltha-x.y on repo voltha-helm-charts
+   https://gerrit.opencord.org/plugins/gitiles/voltha-helm-charts/
+
+# [EOF]
