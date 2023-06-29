@@ -4,30 +4,37 @@
 
 all:
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 edit:
 	./edit.sh
 
-versions:
-	./sandbox.sh
-	find sandbox/ -name 'Chart.yaml' \
-	    | xargs grep -i appVersion \
-	    | awk -F\# '{print $1}' \
-	    | grep -i appversion \
-	    | tr ':' '\t'
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
+versions-chart :
+	./versions.sh
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 sandbox:
 	./sandbox.sh
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 clean:
 	$(RM) -r branches
 	$(RM) -r voltha-helm-charts
 	$(RM) -r sandbox
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 help:
 	@echo "USAGE: $(MAKE)"
-	@echo "  edit       Load files of interest into the editor"
-	@echo "  sandbox    Clone all voltha repos"
-	@echo "  versions   Display Chart.yaml and app versions"
+	@echo "  edit              Load files of interest into the editor"
+	@echo "  sandbox           Clone all voltha repos"
+	@echo
+	@echo '[VERSIONS]'
+	@echo '  versions-chart    Invoke versions.sh'
 
 # [EOF]
 

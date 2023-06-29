@@ -2,7 +2,7 @@
 ## -----------------------------------------------------------------------
 ## Intent: Gather release version information from helm charts.
 ##   1) gather Chart.yaml
-##   2) Dxtract repository name from path
+##   2) Extract repository name from path
 ##   3) Extract version string
 ## -----------------------------------------------------------------------
 
