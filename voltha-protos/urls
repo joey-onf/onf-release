@@ -1,0 +1,6 @@
+# -*- makefile -*-
+
+https://gerrit.opencord.org/plugins/gitiles/voltha-protos/+/refs/heads/master/VERSION
+https://gerrit.opencord.org/plugins/gitiles/voltha-protos/+/refs/heads/voltha-2.12/VERSION
+
+# [EOF]

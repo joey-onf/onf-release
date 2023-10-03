@@ -3,19 +3,23 @@
 ## Intent: Clone all voltha repos into local directory sandbox/.
 ## --------------------------------------------------------------------
 
-# TOP="$(realpath "${0%/*}")"
-TOP="$(realpath '.')"
+##-------------------##
+##---]  GLOBALS  [---##
+##-------------------##
+startPwd="$(realpath '.')"
+readonly startPwd
 
 ## --------------------------------------------------------------------
+## Intent: Guide image logo paths are usually incorrect so find 'em.
 ## --------------------------------------------------------------------
 function gather_guide()
 {
     local logdir="$1"; shift
-    
+
     (
-	set -x
-	grep -r '://guide.opencord.org/logos' .
-	set +x
+        set -x
+        grep -r '://guide.opencord.org/logos' .
+        set +x
     ) >> "$logdir/logos.log"
     return
 }
@@ -52,34 +56,35 @@ REPOS:
  o obtain appVersion string from chart.yaml
  o verify repo: git tag | grep "$appVersion"
 EOF
-EOF
+    EOF
 }
 
 ## --------------------------------------------------------------------
+## Intent: Iterate and checkout all votlha repos for sanity checking
 ## --------------------------------------------------------------------
 function bulk_checkout()
 {
     local logdir="$1"; shift
-    
+
     readarray -t repos < <(\
-			   grep '://' "${TOP}/repos"  \
-			   | awk -F\# '{print $1}'    \
-			   | grep '://'               \
-			  )
+                           grep '://' "${startPwd}/repos"  \
+                               | awk -F\# '{print $1}'    \
+                               | grep '://'               \
+        )
 
     for git_url in "${repos[@]}";
     do
-	repo="${url##*/}"
-	[[ -d "$repo" ]] && continue
+        repo="${url##*/}"
+        [[ -d "$repo" ]] && continue
 
-	echo
-	git clone "${git_url}" >/dev/null
+        echo
+        git clone "${git_url}" >/dev/null
 
-	pushd "${repo}" >/dev/null
-	mkdir -p "$logdir/$name"
-	git branch > "$logdir/$name/branches"
-	git tag    > "$logdir/$name/tag"
-	popd            >/dev/null
+        pushd "${repo}" >/dev/null
+        mkdir -p "$logdir/$name"
+        git branch > "$logdir/$name/branches"
+        git tag    > "$logdir/$name/tag"
+        popd            >/dev/null
     done
 
     return
@@ -92,16 +97,16 @@ proj=voltha
 ver=9999999
 semver="${proj}-${ver}"
 
-logdir="${TOP}/logs"
+logdir="${startPwd}/logs"
 mkdir -p "$logdir"
 mkdir -p sandbox
 
 # mktemp
 mkdir -p sandbox
 pushd sandbox >/dev/null
-  mkdir -p branches
-  bulk_checkout  "$logdir"
-  gather_guide   "$logdir"
+mkdir -p branches
+bulk_checkout  "$logdir"
+gather_guide   "$logdir"
 popd          >/dev/null
 
 # [EOF]

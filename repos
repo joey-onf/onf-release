@@ -1,7 +1,27 @@
 # -*- makefile -*-
 
+ssh://gerrit.opencord.org:29418/voltha-eponolt-adapter
+ssh://gerrit.opencord.org:29418/voltha-ponsimonu-adapter
+ssh://gerrit.opencord.org:29418/voltha-ponsimolt-adapter
+ssh://gerrit.opencord.org:29418/voltha-test-manifest
+ssh://gerrit.opencord.org:29418/voltha-docs
+ssh://gerrit.opencord.org:29418/voltha-epononu-adapter
+# ssh://gerrit.opencord.org:29418/voltha-tools
+ssh://gerrit.opencord.org:29418/voltha-omci
+ssh://gerrit.opencord.org:29418/voltha-go-controller
+ssh://gerrit.opencord.org:29418/voltha-api-server
+ssh://gerrit.opencord.org:29418/voltha-helm-charts
+ssh://gerrit.opencord.org:29418/voltha-protos
+ssh://gerrit.opencord.org:29418/voltha-go
+
 ssh://gerrit.opencord.org:29418/voltha-helm-charts
 ssh://gerrit.opencord.org:29418/voltha-system-tests
+
+ssh://gerrit.opencord.org:29418/voltha-adtran-adapter
+ssh://gerrit.opencord.org:29418/voltha-onos
+ssh://gerrit.opencord.org:29418/voltha-openonu-adapter
+ssh://gerrit.opencord.org:29418/voltha-openonu-adapter-go
+ssh://gerrit.opencord.org:29418/voltha-lib-go
 
 
 

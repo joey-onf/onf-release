@@ -20,18 +20,33 @@ sandbox:
 	./sandbox.sh
 
 ## -----------------------------------------------------------------------
+## Usage: make sterile voltha-protos
 ## -----------------------------------------------------------------------
-clean:
+.PHONY: voltha-protos
+voltha-protos : sandbox
+	$(MAKE) -C $@
+
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
+clean ::
 	$(RM) -r branches
 	$(RM) -r voltha-helm-charts
 	$(RM) -r sandbox
 
 ## -----------------------------------------------------------------------
 ## -----------------------------------------------------------------------
+sterile :: clean
+
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 help:
 	@echo "USAGE: $(MAKE)"
-	@echo "  edit              Load files of interest into the editor"
-	@echo "  sandbox           Clone all voltha repos"
+	@echo '  sandbox           Clone all voltha repos for validation.'
+	@echo
+	@echo '[VALIDATE]'
+	@echo '  voltha-protos     Detect problems related to repo:voltha-protos'
+	@echo
+	@echo '  edit              Load files of interest into the editor'
 	@echo
 	@echo '[VERSIONS]'
 	@echo '  versions-chart    Invoke versions.sh'
