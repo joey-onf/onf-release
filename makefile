@@ -1,7 +1,17 @@
 # -*- makefile -*-
 ## -----------------------------------------------------------------------
+## Intent: Targets in this makefile will clone all voltha repositories
+##         and will invoke a list of makefile targets against each.
 ## -----------------------------------------------------------------------
 
+check += license
+check += versions-chart
+check += voltha-protos
+
+.PHONY: $(check)
+
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 all:
 
 ## -----------------------------------------------------------------------
@@ -10,9 +20,11 @@ edit:
 	./edit.sh
 
 ## -----------------------------------------------------------------------
+## Intent: Iterate and perform validation checks
 ## -----------------------------------------------------------------------
-versions-chart :
-	./versions.sh
+check : $(check)
+$(check) : sandbox
+	$(MAKE) -C $@ check
 
 ## -----------------------------------------------------------------------
 ## -----------------------------------------------------------------------
@@ -20,17 +32,9 @@ sandbox:
 	./sandbox.sh
 
 ## -----------------------------------------------------------------------
-## Usage: make sterile voltha-protos
-## -----------------------------------------------------------------------
-.PHONY: voltha-protos
-voltha-protos : sandbox
-	$(MAKE) -C $@
-
-## -----------------------------------------------------------------------
 ## -----------------------------------------------------------------------
 clean ::
 	$(RM) -r branches
-	$(RM) -r voltha-helm-charts
 	$(RM) -r sandbox
 
 ## -----------------------------------------------------------------------
@@ -41,15 +45,13 @@ sterile :: clean
 ## -----------------------------------------------------------------------
 help:
 	@echo "USAGE: $(MAKE)"
-	@echo '  sandbox           Clone all voltha repos for validation.'
-	@echo
-	@echo '[VALIDATE]'
-	@echo '  voltha-protos     Detect problems related to repo:voltha-protos'
-	@echo
-	@echo '  edit              Load files of interest into the editor'
-	@echo
-	@echo '[VERSIONS]'
-	@echo '  versions-chart    Invoke versions.sh'
+	@printf '  %-30.30s %s\n' 'sandbox'\
+	  'Clone all voltha repos for validation'
+	@printf '  %-30.30s %s\n' 'edit'\
+	  'Load files of interest into an editor'
+
+	@printf '  %-30.30s %s\n' 'check'\
+	  'Iterate over subdirs and perform repository validation checks'
 
 # [EOF]
 

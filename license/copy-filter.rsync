@@ -1,0 +1,14 @@
+# -*- sh -*-
+
+- .git/
+- vendor/
+
+*/cache/*
+*/pkg/*
+
+## FILES
+*~
+*.log
+*.pyc
+
+# [EOF]

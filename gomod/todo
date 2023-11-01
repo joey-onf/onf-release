@@ -1,0 +1,9 @@
+# [TODO]
+
+find "$sbx" -name 'go.mod' \
+    | grep -v '/vendor/'
+
+2) Glob all modules and versions
+3) Average counts across all repositories
+4) Report modules that contain variant versions
+

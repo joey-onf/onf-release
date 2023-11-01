@@ -113,15 +113,17 @@ function report()
     cat <<EOE
     
 ** -----------------------------------------------------------------------
-**   IAM: ${BASH_SOURCE[0]##*/}
-**  Date: $(date)
-** Error: Detected invalid voltha-proto versions
+** Intent: Validate voltha-protos version across repositories.
+**    IAM: ${BASH_SOURCE[0]##*/}
+**   Date: $(date)
+**  Error: Detected invalid voltha-proto versions
 ** -----------------------------------------------------------------------
 EOE
 
     echo -e $(join_by '\n' "${errors[@]}")
     return
 }
+
 ##----------------##
 ##---]  MAIN  [---##
 ##----------------##

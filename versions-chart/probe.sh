@@ -6,8 +6,30 @@
 ##   3) Extract version string
 ## -----------------------------------------------------------------------
 
+declare -a -g errors=()
+
+## -----------------------------------------------------------------------
+## Intent: Display an error message then exit.
+## -----------------------------------------------------------------------
+function error()
+{
+    echo "${BASH_SOURCE[1]} ERROR: $*"
+    exit 1
+}
+
+
+##----------------##
+##---]  MAIN  [---##
+##----------------##
+[[ $# -eq 0 ]] && { echo "ERROR: sandbox path is required"; exit 1; }
+sbx="$1"; shift
+
+pushd "$sbx" || { error "pushd failed: $sbx"; }
+
 # gather
-readarray -t charts < <(find sandbox/ -name 'Chart.yaml')
+/bin/pwd
+readarray -t charts < <(find '.' -name 'Chart.yaml')
+[[ ${#charts} -eq  0 ]] && { error "No charts found in $sbx"; }
 
 for chart in "${charts[@]}";
 do
@@ -24,6 +46,8 @@ do
 	)
     declare -p app_ver
 done
+
+popd || { error "popd failed: $sbx"; }
 
 # | xargs grep -i appVersion | awk -F\# '{print $1}' | grep -i appversion | tr ':' '\t' find sandbox/ -name 'Chart.yaml'
 
